@@ -1,0 +1,1 @@
+../../../HigoUtility/commonutility/Utility/DeviceUtility.h

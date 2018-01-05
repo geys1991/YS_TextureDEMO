@@ -1,0 +1,27 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+source 'git@git.lehe.com:higo-app/HigoSpecs.git'
+source 'https://github.com/CocoaPods/Specs.git' 
+
+target 'YS_TextureDEMO' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+
+  # Pods for YS_TextureDEMO
+
+pod 'Texture', '~> 2.5.1'
+pod 'HigoUtility'
+pod 'AFNetworking', '~> 3.1.0'
+pod 'ReactiveObjC', '~> 3.1.0'
+  target 'YS_TextureDEMOTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'YS_TextureDEMOUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
