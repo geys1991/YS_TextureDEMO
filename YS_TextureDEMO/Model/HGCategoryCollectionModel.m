@@ -72,4 +72,13 @@
     return self;
 }
 
+- (CGSize)sizeForGoodsWithContrainedToWidth:(CGFloat)width;
+{
+    CGFloat imageHeight = width;
+    if (self.mainImage.width > 0 && self.mainImage.height > 0) {
+        imageHeight = width * self.mainImage.height / self.mainImage.width;
+    }
+    return CGSizeMake(width, imageHeight + 50);
+}
+
 @end

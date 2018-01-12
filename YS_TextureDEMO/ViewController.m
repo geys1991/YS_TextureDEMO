@@ -32,11 +32,6 @@
     return self;
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
-}
-
 #pragma mark - request methods
 
 - (void)loadPageWithContext:(ASBatchContext *)context withPage:(NSInteger)currentPage
@@ -110,14 +105,26 @@
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 10)];
-    headerView.backgroundColor = [UIColor lightGrayColor];
+    UIView *headerView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 0.01f)];
+    headerView.backgroundColor = [UIColor clearColor];
     return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
+    return 0.01f;
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+{
     return 10;
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+{
+    UIView *footerView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 10.f)];
+    footerView.backgroundColor = [UIColor lightGrayColor];
+    return footerView;
 }
 
 - (ASCellNode *)tableNode:(ASTableNode *)tableNode nodeForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,6 +132,8 @@
     HGHomeFeedModel *feedModel = [self.dataSource objectAtIndex:indexPath.section];
     HGCategoryCollectionModel *dataModel = [[HGCategoryCollectionModel alloc] initWithJSONDic:feedModel.feedItem];
     HGHomeCollectionCellNode *cellNode = [[HGHomeCollectionCellNode alloc] initWithCollectionModel: dataModel];
+    cellNode.backgroundColor = [UIColor whiteColor];
+    cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
     return cellNode;
 }
 
@@ -134,7 +143,6 @@
 - (void)tableNode:(ASTableNode *)tableNode willBeginBatchFetchWithContext:(ASBatchContext *)context
 {
     [context beginBatchFetching];
-    
     [self loadPageWithContext:context withPage: self.page + 1];
 }
 
@@ -143,7 +151,7 @@
 - (ASTableNode *)tableViewNode
 {
     if ( !_tableViewNode ) {
-        _tableViewNode = [[ASTableNode alloc] init];
+        _tableViewNode = [[ASTableNode alloc] initWithStyle: UITableViewStyleGrouped];
         _tableViewNode.leadingScreensForBatching = 4;
         _tableViewNode.delegate = self;
         _tableViewNode.dataSource = self;

@@ -12,8 +12,6 @@
 
 @interface HGHomeCollectionCellNode : ASCellNode
 
-//- (instancetype)initWithFeedModel:(HGHomeFeedModel *)model;
-
 - (instancetype)initWithCollectionModel:(HGCategoryCollectionModel *)model;
 
 @end

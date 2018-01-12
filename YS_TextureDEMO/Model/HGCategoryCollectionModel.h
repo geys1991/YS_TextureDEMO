@@ -47,4 +47,6 @@
 @property (nonatomic, copy) NSString *salesText;
 @property (nonatomic, assign) NSInteger goodsRepertory;
 
+- (CGSize)sizeForGoodsWithContrainedToWidth:(CGFloat)width;
+
 @end

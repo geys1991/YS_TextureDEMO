@@ -7,8 +7,14 @@
 //
 
 #import "HGHeaderGoodslistCellNode.h"
+#import "HGASNetworkImageManager.h"
+#import "HGCategoryCollectionModel.h"
+#import "ImageModel.h"
+
 
 @interface HGHeaderGoodslistCellNode ()
+
+@property (nonatomic, strong) HGCategoryCollectionGoodsModel *dataInfo;
 
 @property (nonatomic, strong) ASNetworkImageNode *goodInfoImageNode;
 @property (nonatomic, strong) ASTextNode *brandNameNode;
@@ -18,10 +24,11 @@
 
 @implementation HGHeaderGoodslistCellNode
 
--(instancetype)init
+-(instancetype)initWithGoodsInfo:(HGCategoryCollectionGoodsModel *)model
 {
     self = [super init];
     if ( self ) {
+        self.dataInfo = model;
         [self setContent];
         self.automaticallyManagesSubnodes = YES;
     }
@@ -30,30 +37,35 @@
 
 - (void)setContent
 {
-    NSArray *jpgs = @[@"https://pic.lehe.com/pic/_o/a1/cb/374ed3a528cb6dd9f5f017a2e9cc_750_750.cz.jpg_c8f6a2d9_s1_375_2000.jpg",
-                      @"https://pic.lehe.com/pic/_o/7a/89/0614f0a525894a978544ce1fbb14_750_750.cz.jpg_61897fcb_s1_375_2000.jpg",
-                      @"https://pic.lehe.com/pic/_o/95/c6/f3bd6728275038bd8892c5e69c02_750_600.cz.jpg_cd42c1f5_s1_q1_90_750_4000.jpg",
-                      @"https://pic.lehe.com/pic/_o/81/1a/f56a1ddbba9777aab7ec40e7d73a_750_750.cz.jpg_702984ea_s1_375_2000.jpg",
-                      @"https://pic.lehe.com/pic/_o/0b/1a/b2626ec529510fb3c7ba477e293c_800_800.cz.jpg_e1936aba_s1_q1_90_750_4000.jpg"];
-    
-    int x = arc4random() % [jpgs count];
-    
-    self.goodInfoImageNode.URL = [NSURL URLWithString: [jpgs objectAtIndex: x]];
-    
-    self.brandNameNode.attributedText = [[NSAttributedString alloc] initWithString: @"dasadi"];
-    self.priceNode.attributedText = [[NSAttributedString alloc] initWithString: @"100000"];
+    self.goodInfoImageNode.URL = [NSURL URLWithString: self.dataInfo.mainImage.posterImagePath];
+    self.brandNameNode.attributedText = [[NSAttributedString alloc] initWithString: self.dataInfo.brandName];
+    self.priceNode.attributedText = [[NSAttributedString alloc] initWithString: self.dataInfo.goodsPrice];
 }
 
 #pragma mark - layout
 
 -(ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
 {
-    ASInsetLayoutSpec *goodInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(5, 10, 5, 10) child: self.goodInfoImageNode];
-    ASInsetLayoutSpec *brandInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(5, 10, 5, 10) child: self.brandNameNode];
-    ASInsetLayoutSpec *priceInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(5, 10, 5, 10) child: self.priceNode];
+    ASInsetLayoutSpec *goodInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(0, 5, 0, 0) child: [self imageSpecWithSize: constrainedSize]];
+    ASInsetLayoutSpec *brandInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(5, 0, 0, 0) child: self.brandNameNode];
+    ASInsetLayoutSpec *priceInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(3, 0, 0, 0) child: self.priceNode];
     
     ASStackLayoutSpec *stackSpec = [ASStackLayoutSpec stackLayoutSpecWithDirection: ASStackLayoutDirectionVertical spacing:0 justifyContent: ASStackLayoutJustifyContentStart alignItems: ASStackLayoutAlignItemsCenter children: @[goodInsetSpec, brandInsetSpec, priceInsetSpec]];
     return stackSpec;
+}
+
+- (ASLayoutSpec *)imageSpecWithSize:(ASSizeRange)constrainedSize {
+    
+    CGFloat imageRatio = [self imageRatioFromSize:constrainedSize.max];
+    ASRatioLayoutSpec *imagePlace = [ASRatioLayoutSpec ratioLayoutSpecWithRatio:imageRatio child:self.goodInfoImageNode];
+    return imagePlace;
+}
+
+- (CGFloat)imageRatioFromSize:(CGSize)size {
+    CGFloat imageHeight = size.height;
+    CGFloat imageRatio = imageHeight / size.width;
+    
+    return 1;
 }
 
 #pragma mark - setter && getter
@@ -62,7 +74,7 @@
 {
     if ( !_goodInfoImageNode ) {
         _goodInfoImageNode = [[ASNetworkImageNode alloc] init];
-        _goodInfoImageNode.style.preferredSize = CGSizeMake(80, 80);
+//        _goodInfoImageNode.style.preferredSize = CGSizeMake(80, 80);
         _goodInfoImageNode.layerBacked = YES;
     }
     return _goodInfoImageNode;
@@ -85,6 +97,5 @@
     }
     return _priceNode;
 }
-
 
 @end

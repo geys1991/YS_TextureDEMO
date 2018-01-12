@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		296BB9F5E819C3FB82F9C765 /* libPods-YS_TextureDEMOUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6E3E1732186A786139A13B /* libPods-YS_TextureDEMOUITests.a */; };
+		3D2B714E200623E800E1A483 /* HGASNetworkImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B714D200623E800E1A483 /* HGASNetworkImageManager.m */; };
+		3D2B7154200754FD00E1A483 /* UIImage+makeCircularImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B7153200754FD00E1A483 /* UIImage+makeCircularImage.m */; };
 		3D9309441FFF5988009436FB /* HGHomeFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9309431FFF5988009436FB /* HGHomeFeedModel.m */; };
 		3D9309481FFF5A3D009436FB /* NSJSONSerialization+Extras.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9309471FFF5A3D009436FB /* NSJSONSerialization+Extras.m */; };
 		3D93094B1FFF5BBD009436FB /* HGCategoryCollectionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9309491FFF5BBD009436FB /* HGCategoryCollectionModel.m */; };
@@ -49,6 +51,10 @@
 /* Begin PBXFileReference section */
 		1F37EE5B2D74068A40A9D5F9 /* libPods-YS_TextureDEMOTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YS_TextureDEMOTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		241B8A1B30FF6C20260A9312 /* Pods-YS_TextureDEMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YS_TextureDEMO.release.xcconfig"; path = "Pods/Target Support Files/Pods-YS_TextureDEMO/Pods-YS_TextureDEMO.release.xcconfig"; sourceTree = "<group>"; };
+		3D2B714C200623E800E1A483 /* HGASNetworkImageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGASNetworkImageManager.h; sourceTree = "<group>"; };
+		3D2B714D200623E800E1A483 /* HGASNetworkImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGASNetworkImageManager.m; sourceTree = "<group>"; };
+		3D2B7152200754FD00E1A483 /* UIImage+makeCircularImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+makeCircularImage.h"; sourceTree = "<group>"; };
+		3D2B7153200754FD00E1A483 /* UIImage+makeCircularImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+makeCircularImage.m"; sourceTree = "<group>"; };
 		3D9309421FFF5988009436FB /* HGHomeFeedModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGHomeFeedModel.h; sourceTree = "<group>"; };
 		3D9309431FFF5988009436FB /* HGHomeFeedModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGHomeFeedModel.m; sourceTree = "<group>"; };
 		3D9309461FFF5A3D009436FB /* NSJSONSerialization+Extras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSJSONSerialization+Extras.h"; sourceTree = "<group>"; };
@@ -140,6 +146,8 @@
 				3D9309531FFF5DA3009436FB /* NSDictionary+HGTypeSafe.m */,
 				3D9309461FFF5A3D009436FB /* NSJSONSerialization+Extras.h */,
 				3D9309471FFF5A3D009436FB /* NSJSONSerialization+Extras.m */,
+				3D2B7152200754FD00E1A483 /* UIImage+makeCircularImage.h */,
+				3D2B7153200754FD00E1A483 /* UIImage+makeCircularImage.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -195,6 +203,7 @@
 		3D93FCEB1FFF2CE5009436FB /* YS_TextureDEMO */ = {
 			isa = PBXGroup;
 			children = (
+				3DC1EB71200310A2001A094E /* Manager */,
 				3D9309E91FFF655D009436FB /* Cell */,
 				3D9309E71FFF64A1009436FB /* Model */,
 				3D9309451FFF5A25009436FB /* Utils */,
@@ -228,6 +237,15 @@
 				3D93FD121FFF2CE5009436FB /* Info.plist */,
 			);
 			path = YS_TextureDEMOUITests;
+			sourceTree = "<group>";
+		};
+		3DC1EB71200310A2001A094E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				3D2B714C200623E800E1A483 /* HGASNetworkImageManager.h */,
+				3D2B714D200623E800E1A483 /* HGASNetworkImageManager.m */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		C9F66DA6B525562208734F00 /* Pods */ = {
@@ -536,6 +554,7 @@
 				3D9309E61FFF645C009436FB /* NSDictionary+TypeSafe.m in Sources */,
 				3D93FCF11FFF2CE5009436FB /* ViewController.m in Sources */,
 				3D9309541FFF5DA3009436FB /* NSDictionary+HGTypeSafe.m in Sources */,
+				3D2B7154200754FD00E1A483 /* UIImage+makeCircularImage.m in Sources */,
 				3D9309EF1FFF66EC009436FB /* HGHeaderGoodslistCellNode.m in Sources */,
 				3D93094B1FFF5BBD009436FB /* HGCategoryCollectionModel.m in Sources */,
 				3D9309511FFF5D18009436FB /* ImageModel.m in Sources */,
@@ -543,6 +562,7 @@
 				3D9309EC1FFF6570009436FB /* HGHomeCollectionCellNode.m in Sources */,
 				3D9309441FFF5988009436FB /* HGHomeFeedModel.m in Sources */,
 				3D93FCFC1FFF2CE5009436FB /* main.m in Sources */,
+				3D2B714E200623E800E1A483 /* HGASNetworkImageManager.m in Sources */,
 				3D93FCEE1FFF2CE5009436FB /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

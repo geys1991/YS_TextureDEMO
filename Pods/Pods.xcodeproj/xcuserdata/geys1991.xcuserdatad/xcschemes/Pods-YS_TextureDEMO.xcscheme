@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '45DA9441ACC281C7F6F7AE0B71D8251E'
+               BlueprintIdentifier = '2B6594E9910945DA71AD81FF0A0C1E3F'
                BlueprintName = 'Pods-YS_TextureDEMO'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-YS_TextureDEMO.a'>

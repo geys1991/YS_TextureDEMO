@@ -8,6 +8,10 @@
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
+@class HGCategoryCollectionGoodsModel;
+
 @interface HGHeaderGoodslistCellNode : ASCellNode
+
+-(instancetype)initWithGoodsInfo:(HGCategoryCollectionGoodsModel *)model;
 
 @end
