@@ -24,7 +24,7 @@
 
 @implementation HGHeaderGoodslistCellNode
 
--(instancetype)initWithGoodsInfo:(HGCategoryCollectionGoodsModel *)model
+- (instancetype)initWithGoodsInfo:(HGCategoryCollectionGoodsModel *)model
 {
     self = [super init];
     if ( self ) {
@@ -39,23 +39,27 @@
 {
     self.goodInfoImageNode.URL = [NSURL URLWithString: self.dataInfo.mainImage.posterImagePath];
     self.brandNameNode.attributedText = [[NSAttributedString alloc] initWithString: self.dataInfo.brandName];
-    self.priceNode.attributedText = [[NSAttributedString alloc] initWithString: self.dataInfo.goodsPrice];
+    
+    NSMutableAttributedString *priceInfoAttributeString = [[NSMutableAttributedString alloc] initWithString: [NSString stringWithFormat: @"%@ %@", self.dataInfo.goodsPrice, self.dataInfo.salesText]];
+    [priceInfoAttributeString addAttributes: @{NSForegroundColorAttributeName : [UIColor lightGrayColor]}
+                                      range: NSMakeRange(self.dataInfo.goodsPrice.length, priceInfoAttributeString.length - self.dataInfo.goodsPrice.length)];
+    
+    self.priceNode.attributedText = priceInfoAttributeString;
 }
 
 #pragma mark - layout
 
--(ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
+- (ASLayoutSpec *)layoutSpecThatFits:(ASSizeRange)constrainedSize
 {
-    ASInsetLayoutSpec *goodInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(0, 5, 0, 0) child: [self imageSpecWithSize: constrainedSize]];
-    ASInsetLayoutSpec *brandInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(5, 0, 0, 0) child: self.brandNameNode];
-    ASInsetLayoutSpec *priceInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(3, 0, 0, 0) child: self.priceNode];
+    ASInsetLayoutSpec *goodInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(0, 5, 0, 5) child: [self imageSpecWithSize: constrainedSize]];
+    ASInsetLayoutSpec *brandInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(10, 0, 0, 0) child: self.brandNameNode];
+    ASInsetLayoutSpec *priceInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(5, 0, 0, 0) child: self.priceNode];
     
     ASStackLayoutSpec *stackSpec = [ASStackLayoutSpec stackLayoutSpecWithDirection: ASStackLayoutDirectionVertical spacing:0 justifyContent: ASStackLayoutJustifyContentStart alignItems: ASStackLayoutAlignItemsCenter children: @[goodInsetSpec, brandInsetSpec, priceInsetSpec]];
     return stackSpec;
 }
 
 - (ASLayoutSpec *)imageSpecWithSize:(ASSizeRange)constrainedSize {
-    
     CGFloat imageRatio = [self imageRatioFromSize:constrainedSize.max];
     ASRatioLayoutSpec *imagePlace = [ASRatioLayoutSpec ratioLayoutSpecWithRatio:imageRatio child:self.goodInfoImageNode];
     return imagePlace;
@@ -74,7 +78,6 @@
 {
     if ( !_goodInfoImageNode ) {
         _goodInfoImageNode = [[ASNetworkImageNode alloc] init];
-//        _goodInfoImageNode.style.preferredSize = CGSizeMake(80, 80);
         _goodInfoImageNode.layerBacked = YES;
     }
     return _goodInfoImageNode;

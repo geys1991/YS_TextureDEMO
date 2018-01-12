@@ -15,7 +15,7 @@
 
 #import "UIImage+makeCircularImage.h"
 
-static const CGFloat kInnerPadding = 5.0f;
+static const CGFloat kInnerPadding = 0.0f;
 
 @interface HGHomeCollectionCellNode()<ASCollectionDelegateFlowLayout, ASCollectionDelegate, ASCollectionDataSource>
 
@@ -59,8 +59,10 @@ static const CGFloat kInnerPadding = 5.0f;
     self.certificateNameNode.attributedText = [[NSAttributedString alloc] initWithString: self.dataModel.owner.certificateName ? : @""];
 
     NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@ %@", self.dataModel.rankingText ?: @"" ,self.dataModel.favoriteText ?: @""]];
-    [attributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor redColor]} range:NSMakeRange(0, self.dataModel.rankingText.length)];
-    [attributedString addAttributes:@{NSForegroundColorAttributeName : [UIColor lightGrayColor]} range:NSMakeRange(self.dataModel.rankingText.length, attributedString.length - self.dataModel.rankingText.length)];
+    [attributedString addAttributes: @{NSForegroundColorAttributeName : [UIColor redColor]}
+                              range: NSMakeRange(0, self.dataModel.rankingText.length)];
+    [attributedString addAttributes: @{NSForegroundColorAttributeName : [UIColor lightGrayColor]}
+                              range: NSMakeRange(self.dataModel.rankingText.length, attributedString.length - self.dataModel.rankingText.length)];
 
     self.favoriteTextNode.attributedText = attributedString;
     
@@ -316,10 +318,8 @@ static const CGFloat kInnerPadding = 5.0f;
     if ( !_goodsCollectionNode ) {
         UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
         flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-        
-        CGRect r = [ UIScreen mainScreen ].applicationFrame;
-//        flowLayout.itemSize = CGSizeMake(r.size.width / 3.0f, r.size.width / 3.0f);
         flowLayout.minimumInteritemSpacing = kInnerPadding;
+        flowLayout.minimumLineSpacing = 0;
         
         _goodsCollectionNode = [[ASCollectionNode alloc] initWithCollectionViewLayout:flowLayout];
         _goodsCollectionNode.delegate = self;
