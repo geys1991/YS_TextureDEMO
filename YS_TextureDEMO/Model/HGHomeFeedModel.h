@@ -32,12 +32,13 @@ typedef NS_ENUM(NSInteger, HGHomeFeedType)
     HGHomeFeedTypeGoods,
 };
 
-
+@class YSHomeGoodsModel;
 
 @interface HGHomeFeedModel : BaseModel
 
 @property (nonatomic, assign, readonly) HGHomeFeedType feedType;
 @property (nonatomic, copy) NSArray *feedItems;
 @property (nonatomic, copy) NSDictionary *feedItem;
+@property (nonatomic, strong) YSHomeGoodsModel *goods;
 
 @end

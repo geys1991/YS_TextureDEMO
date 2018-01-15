@@ -1,6 +1,6 @@
 //
 //  HGHomeCollectionCellNode.m
-//  HIGO
+//  YS_TextureDEMO
 //
 //  Created by geys1991 on 2017/12/28.
 //  Copyright © 2017年 geys1991. All rights reserved.
@@ -22,7 +22,6 @@ static const CGFloat kInnerPadding = 0.0f;
 @property (nonatomic, strong) HGCategoryCollectionModel *dataModel;
 @property (nonatomic, strong) HGHomeFeedModel *feedModel;
 
-
 @property (nonatomic, strong) ASNetworkImageNode *authorAvatarNode;
 @property (nonatomic, strong) ASNetworkImageNode *certificateIconNode;
 @property (nonatomic, strong) ASTextNode *authorNickNameNode;
@@ -42,7 +41,7 @@ static const CGFloat kInnerPadding = 0.0f;
 
 @implementation HGHomeCollectionCellNode
 
-- (instancetype)initWithCollectionModel:(HGCategoryCollectionModel *)model;
+- (instancetype)initWithCollectionModel:(HGCategoryCollectionModel *)model
 {
     self = [super init];
     if ( self ) {
@@ -79,12 +78,12 @@ static const CGFloat kInnerPadding = 0.0f;
     NSMutableAttributedString *titleAttributeString = [[NSMutableAttributedString alloc] initWithString: self.dataModel.title
                                                                                              attributes: @{NSForegroundColorAttributeName : [UIColor whiteColor],
                                                                                                            NSFontAttributeName: [UIFont boldSystemFontOfSize:20]}];
-    
+    self.albumTitleNode.attributedText = titleAttributeString;
+
     NSMutableAttributedString *subTitleAttributeString = [[NSMutableAttributedString alloc] initWithString: self.dataModel.desc
                                                                                              attributes: @{NSForegroundColorAttributeName : [UIColor whiteColor],
                                                                                                            NSFontAttributeName: [UIFont boldSystemFontOfSize:15]}];
     
-    self.albumTitleNode.attributedText = titleAttributeString;
     self.albumSubTitleNode.attributedText = subTitleAttributeString;
 }
 
@@ -92,10 +91,6 @@ static const CGFloat kInnerPadding = 0.0f;
 {
     NSMutableArray *childLayouts = [[NSMutableArray alloc] init];
     [childLayouts addObject: [self userInfoLayoutSpec]];
-    
-//    ASInsetLayoutSpec *spaceInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(10, 0, 0, 0) child:<#(nonnull id<ASLayoutElement>)#>]
-    
-    
     [childLayouts addObject: [self albumInfoLayoutSpec]];
     [childLayouts addObject: [self goodsInfoLayoutSpec]];
     
@@ -285,7 +280,7 @@ static const CGFloat kInnerPadding = 0.0f;
     return _albumContentNumberNode;
 }
 
--(ASImageNode *)shadowImageNode
+- (ASImageNode *)shadowImageNode
 {
     if ( !_shadowImageNode ) {
         _shadowImageNode = [[ASImageNode alloc] init];

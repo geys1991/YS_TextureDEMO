@@ -10,6 +10,8 @@
 #import "HGHomeFeedModel.h"
 #import "HGCategoryCollectionModel.h"
 #import "HGHomeCollectionCellNode.h"
+#import "YSHomeGoodsInfoCellNode.h"
+#import "YSHomeGoodsModel.h"
 
 
 @interface ViewController ()  <ASTableDelegate, ASTableDataSource>
@@ -44,7 +46,7 @@
             NSInteger existingNumberOfPhotos = [self.dataSource count];
             
             [newDataArray enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                if ([obj isKindOfClass:[NSDictionary class]] && [[obj objectForKey: @"type"] isEqualToString: @"collection"]) {
+                if ( [obj isKindOfClass:[NSDictionary class]] && ( [[obj objectForKey: @"type"] isEqualToString: @"collection"] || [[obj objectForKey: @"type"] isEqualToString: @"goods"] ) ) {
                     HGHomeFeedModel *feed = [[HGHomeFeedModel alloc] initWithJSONDic:obj];
                     if (feed.feedType != HGHomeFeedTypeUnknown && (feed.feedItems.count || feed.feedItem)) {
                     }
@@ -69,7 +71,9 @@
 {
     
     AFHTTPSessionManager *manager = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString: @"https://v.lehe.com/"]];
-    [manager POST: @"v7/home/feeds" parameters: @{@"p" : @(currentPage)} progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+    [manager POST: @"v7/home/feeds" parameters: @{@"p" : @(currentPage),
+                                                  @"cver" : @"7.2.0"
+                                                  } progress: nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
 
         NSDictionary *data = [responseObject objectForKey: @"data"];
         NSArray *list = [data objectForKey: @"list"];
@@ -115,12 +119,12 @@
     return 0.01f;
 }
 
--(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 10;
 }
 
--(UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *footerView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 10.f)];
     footerView.backgroundColor = [UIColor lightGrayColor];
@@ -130,11 +134,20 @@
 - (ASCellNode *)tableNode:(ASTableNode *)tableNode nodeForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HGHomeFeedModel *feedModel = [self.dataSource objectAtIndex:indexPath.section];
-    HGCategoryCollectionModel *dataModel = [[HGCategoryCollectionModel alloc] initWithJSONDic:feedModel.feedItem];
-    HGHomeCollectionCellNode *cellNode = [[HGHomeCollectionCellNode alloc] initWithCollectionModel: dataModel];
-    cellNode.backgroundColor = [UIColor whiteColor];
-    cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
-    return cellNode;
+    
+    if ( feedModel.feedType == HGHomeFeedTypeGoods ) {
+//        YSHomeGoodsModel *dataModel = [[YSHomeGoodsModel alloc] initWithJSONDic:feedModel.feedItem];
+        YSHomeGoodsInfoCellNode *cellNode = [[YSHomeGoodsInfoCellNode alloc] init];
+        cellNode.backgroundColor = [UIColor whiteColor];
+        cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cellNode;
+    }else {
+        HGCategoryCollectionModel *dataModel = [[HGCategoryCollectionModel alloc] initWithJSONDic:feedModel.feedItem];
+        HGHomeCollectionCellNode *cellNode = [[HGHomeCollectionCellNode alloc] initWithCollectionModel: dataModel];
+        cellNode.backgroundColor = [UIColor whiteColor];
+        cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
+        return cellNode;
+    }
 }
 
 #pragma mark - ASTableDelegate methods

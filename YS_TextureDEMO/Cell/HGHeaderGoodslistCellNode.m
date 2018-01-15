@@ -1,6 +1,6 @@
 //
 //  HGHeaderGoodslistCellNode.m
-//  HIGO
+//  YS_TextureDEMO
 //
 //  Created by geys1991 on 2017/12/29.
 //  Copyright © 2017年 geys1991. All rights reserved.
@@ -74,7 +74,7 @@
 
 #pragma mark - setter && getter
 
--(ASNetworkImageNode *)goodInfoImageNode
+- (ASNetworkImageNode *)goodInfoImageNode
 {
     if ( !_goodInfoImageNode ) {
         _goodInfoImageNode = [[ASNetworkImageNode alloc] init];
@@ -83,7 +83,7 @@
     return _goodInfoImageNode;
 }
 
--(ASTextNode *)brandNameNode
+- (ASTextNode *)brandNameNode
 {
     if ( !_brandNameNode ) {
         _brandNameNode = [[ASTextNode alloc] init];
@@ -92,7 +92,7 @@
     return _brandNameNode;
 }
 
--(ASTextNode *)priceNode
+- (ASTextNode *)priceNode
 {
     if ( !_priceNode ) {
         _priceNode = [[ASTextNode alloc] init];

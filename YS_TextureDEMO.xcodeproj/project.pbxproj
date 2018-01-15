@@ -27,6 +27,10 @@
 		3D93FCFC1FFF2CE5009436FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D93FCFB1FFF2CE5009436FB /* main.m */; };
 		3D93FD061FFF2CE5009436FB /* YS_TextureDEMOTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D93FD051FFF2CE5009436FB /* YS_TextureDEMOTests.m */; };
 		3D93FD111FFF2CE5009436FB /* YS_TextureDEMOUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D93FD101FFF2CE5009436FB /* YS_TextureDEMOUITests.m */; };
+		3DAC5BF92008D43400423761 /* YSHomeGoodsInfoCellNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC5BF82008D43400423761 /* YSHomeGoodsInfoCellNode.m */; };
+		3DAC5BFC200C8A6D00423761 /* YSHomeGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC5BFB200C8A6D00423761 /* YSHomeGoodsModel.m */; };
+		3DAC5BFF200C8AB200423761 /* TagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC5BFE200C8AB200423761 /* TagModel.m */; };
+		3DAC5C03200CA56000423761 /* YSHomeLocationTagContentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC5C02200CA56000423761 /* YSHomeLocationTagContentNode.m */; };
 		588FE3E5FEFD695DA2C4001D /* libPods-YS_TextureDEMOTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F37EE5B2D74068A40A9D5F9 /* libPods-YS_TextureDEMOTests.a */; };
 		730463A67173B54250C78D77 /* libPods-YS_TextureDEMO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F85C32885B51787BC36E37 /* libPods-YS_TextureDEMO.a */; };
 /* End PBXBuildFile section */
@@ -90,6 +94,14 @@
 		3D93FD0C1FFF2CE5009436FB /* YS_TextureDEMOUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YS_TextureDEMOUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D93FD101FFF2CE5009436FB /* YS_TextureDEMOUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YS_TextureDEMOUITests.m; sourceTree = "<group>"; };
 		3D93FD121FFF2CE5009436FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DAC5BF72008D43400423761 /* YSHomeGoodsInfoCellNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSHomeGoodsInfoCellNode.h; sourceTree = "<group>"; };
+		3DAC5BF82008D43400423761 /* YSHomeGoodsInfoCellNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSHomeGoodsInfoCellNode.m; sourceTree = "<group>"; };
+		3DAC5BFA200C8A6D00423761 /* YSHomeGoodsModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSHomeGoodsModel.h; sourceTree = "<group>"; };
+		3DAC5BFB200C8A6D00423761 /* YSHomeGoodsModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSHomeGoodsModel.m; sourceTree = "<group>"; };
+		3DAC5BFD200C8AB200423761 /* TagModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagModel.h; sourceTree = "<group>"; };
+		3DAC5BFE200C8AB200423761 /* TagModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagModel.m; sourceTree = "<group>"; };
+		3DAC5C01200CA56000423761 /* YSHomeLocationTagContentNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSHomeLocationTagContentNode.h; sourceTree = "<group>"; };
+		3DAC5C02200CA56000423761 /* YSHomeLocationTagContentNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSHomeLocationTagContentNode.m; sourceTree = "<group>"; };
 		45AD5ED18FD190E63B8A04A9 /* Pods-YS_TextureDEMOUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YS_TextureDEMOUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YS_TextureDEMOUITests/Pods-YS_TextureDEMOUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A6E3E1732186A786139A13B /* libPods-YS_TextureDEMOUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YS_TextureDEMOUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC25C3896DD3FB8683DBA17 /* Pods-YS_TextureDEMOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YS_TextureDEMOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YS_TextureDEMOTests/Pods-YS_TextureDEMOTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,6 +175,10 @@
 				3D93094F1FFF5D17009436FB /* ImageModel.m */,
 				3D93094A1FFF5BBD009436FB /* HGCategoryCollectionModel.h */,
 				3D9309491FFF5BBD009436FB /* HGCategoryCollectionModel.m */,
+				3DAC5BFA200C8A6D00423761 /* YSHomeGoodsModel.h */,
+				3DAC5BFB200C8A6D00423761 /* YSHomeGoodsModel.m */,
+				3DAC5BFD200C8AB200423761 /* TagModel.h */,
+				3DAC5BFE200C8AB200423761 /* TagModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,6 +190,8 @@
 				3D9309EE1FFF66EC009436FB /* HGHeaderGoodslistCellNode.m */,
 				3D9309EA1FFF6570009436FB /* HGHomeCollectionCellNode.h */,
 				3D9309EB1FFF6570009436FB /* HGHomeCollectionCellNode.m */,
+				3DAC5BF72008D43400423761 /* YSHomeGoodsInfoCellNode.h */,
+				3DAC5BF82008D43400423761 /* YSHomeGoodsInfoCellNode.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -203,6 +221,7 @@
 		3D93FCEB1FFF2CE5009436FB /* YS_TextureDEMO */ = {
 			isa = PBXGroup;
 			children = (
+				3DAC5C00200CA53900423761 /* view */,
 				3DC1EB71200310A2001A094E /* Manager */,
 				3D9309E91FFF655D009436FB /* Cell */,
 				3D9309E71FFF64A1009436FB /* Model */,
@@ -237,6 +256,15 @@
 				3D93FD121FFF2CE5009436FB /* Info.plist */,
 			);
 			path = YS_TextureDEMOUITests;
+			sourceTree = "<group>";
+		};
+		3DAC5C00200CA53900423761 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				3DAC5C01200CA56000423761 /* YSHomeLocationTagContentNode.h */,
+				3DAC5C02200CA56000423761 /* YSHomeLocationTagContentNode.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 		3DC1EB71200310A2001A094E /* Manager */ = {
@@ -552,9 +580,12 @@
 			files = (
 				3D9309481FFF5A3D009436FB /* NSJSONSerialization+Extras.m in Sources */,
 				3D9309E61FFF645C009436FB /* NSDictionary+TypeSafe.m in Sources */,
+				3DAC5C03200CA56000423761 /* YSHomeLocationTagContentNode.m in Sources */,
 				3D93FCF11FFF2CE5009436FB /* ViewController.m in Sources */,
+				3DAC5BF92008D43400423761 /* YSHomeGoodsInfoCellNode.m in Sources */,
 				3D9309541FFF5DA3009436FB /* NSDictionary+HGTypeSafe.m in Sources */,
 				3D2B7154200754FD00E1A483 /* UIImage+makeCircularImage.m in Sources */,
+				3DAC5BFF200C8AB200423761 /* TagModel.m in Sources */,
 				3D9309EF1FFF66EC009436FB /* HGHeaderGoodslistCellNode.m in Sources */,
 				3D93094B1FFF5BBD009436FB /* HGCategoryCollectionModel.m in Sources */,
 				3D9309511FFF5D18009436FB /* ImageModel.m in Sources */,
@@ -564,6 +595,7 @@
 				3D93FCFC1FFF2CE5009436FB /* main.m in Sources */,
 				3D2B714E200623E800E1A483 /* HGASNetworkImageManager.m in Sources */,
 				3D93FCEE1FFF2CE5009436FB /* AppDelegate.m in Sources */,
+				3DAC5BFC200C8A6D00423761 /* YSHomeGoodsModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
