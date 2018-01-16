@@ -8,6 +8,10 @@
 
 #import <AsyncDisplayKit/AsyncDisplayKit.h>
 
+@class YSHomeGoodsModel;
+
 @interface YSHomeGoodsInfoCellNode : ASCellNode
+
+- (instancetype)initWithGoodsModel:(YSHomeGoodsModel *)goodsModel;
 
 @end

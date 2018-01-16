@@ -136,8 +136,8 @@
     HGHomeFeedModel *feedModel = [self.dataSource objectAtIndex:indexPath.section];
     
     if ( feedModel.feedType == HGHomeFeedTypeGoods ) {
-//        YSHomeGoodsModel *dataModel = [[YSHomeGoodsModel alloc] initWithJSONDic:feedModel.feedItem];
-        YSHomeGoodsInfoCellNode *cellNode = [[YSHomeGoodsInfoCellNode alloc] init];
+        YSHomeGoodsModel *dataModel = [[YSHomeGoodsModel alloc] initWithJSONDic:feedModel.feedItem];
+        YSHomeGoodsInfoCellNode *cellNode = [[YSHomeGoodsInfoCellNode alloc] initWithGoodsModel: dataModel];
         cellNode.backgroundColor = [UIColor whiteColor];
         cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
         return cellNode;

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		296BB9F5E819C3FB82F9C765 /* libPods-YS_TextureDEMOUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A6E3E1732186A786139A13B /* libPods-YS_TextureDEMOUITests.a */; };
+		3D1494B0200DE64A008EF6B8 /* YSHomeTagNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D1494AF200DE64A008EF6B8 /* YSHomeTagNode.m */; };
 		3D2B714E200623E800E1A483 /* HGASNetworkImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B714D200623E800E1A483 /* HGASNetworkImageManager.m */; };
 		3D2B7154200754FD00E1A483 /* UIImage+makeCircularImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D2B7153200754FD00E1A483 /* UIImage+makeCircularImage.m */; };
 		3D9309441FFF5988009436FB /* HGHomeFeedModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D9309431FFF5988009436FB /* HGHomeFeedModel.m */; };
@@ -31,6 +32,7 @@
 		3DAC5BFC200C8A6D00423761 /* YSHomeGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC5BFB200C8A6D00423761 /* YSHomeGoodsModel.m */; };
 		3DAC5BFF200C8AB200423761 /* TagModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC5BFE200C8AB200423761 /* TagModel.m */; };
 		3DAC5C03200CA56000423761 /* YSHomeLocationTagContentNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC5C02200CA56000423761 /* YSHomeLocationTagContentNode.m */; };
+		3DAC5C06200CB35700423761 /* YSHomeTagsNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 3DAC5C05200CB35700423761 /* YSHomeTagsNode.m */; };
 		588FE3E5FEFD695DA2C4001D /* libPods-YS_TextureDEMOTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F37EE5B2D74068A40A9D5F9 /* libPods-YS_TextureDEMOTests.a */; };
 		730463A67173B54250C78D77 /* libPods-YS_TextureDEMO.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6F85C32885B51787BC36E37 /* libPods-YS_TextureDEMO.a */; };
 /* End PBXBuildFile section */
@@ -55,6 +57,8 @@
 /* Begin PBXFileReference section */
 		1F37EE5B2D74068A40A9D5F9 /* libPods-YS_TextureDEMOTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YS_TextureDEMOTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		241B8A1B30FF6C20260A9312 /* Pods-YS_TextureDEMO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YS_TextureDEMO.release.xcconfig"; path = "Pods/Target Support Files/Pods-YS_TextureDEMO/Pods-YS_TextureDEMO.release.xcconfig"; sourceTree = "<group>"; };
+		3D1494AE200DE64A008EF6B8 /* YSHomeTagNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSHomeTagNode.h; sourceTree = "<group>"; };
+		3D1494AF200DE64A008EF6B8 /* YSHomeTagNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSHomeTagNode.m; sourceTree = "<group>"; };
 		3D2B714C200623E800E1A483 /* HGASNetworkImageManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HGASNetworkImageManager.h; sourceTree = "<group>"; };
 		3D2B714D200623E800E1A483 /* HGASNetworkImageManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HGASNetworkImageManager.m; sourceTree = "<group>"; };
 		3D2B7152200754FD00E1A483 /* UIImage+makeCircularImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+makeCircularImage.h"; sourceTree = "<group>"; };
@@ -102,6 +106,8 @@
 		3DAC5BFE200C8AB200423761 /* TagModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagModel.m; sourceTree = "<group>"; };
 		3DAC5C01200CA56000423761 /* YSHomeLocationTagContentNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSHomeLocationTagContentNode.h; sourceTree = "<group>"; };
 		3DAC5C02200CA56000423761 /* YSHomeLocationTagContentNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSHomeLocationTagContentNode.m; sourceTree = "<group>"; };
+		3DAC5C04200CB35700423761 /* YSHomeTagsNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YSHomeTagsNode.h; sourceTree = "<group>"; };
+		3DAC5C05200CB35700423761 /* YSHomeTagsNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YSHomeTagsNode.m; sourceTree = "<group>"; };
 		45AD5ED18FD190E63B8A04A9 /* Pods-YS_TextureDEMOUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YS_TextureDEMOUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YS_TextureDEMOUITests/Pods-YS_TextureDEMOUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		4A6E3E1732186A786139A13B /* libPods-YS_TextureDEMOUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-YS_TextureDEMOUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FC25C3896DD3FB8683DBA17 /* Pods-YS_TextureDEMOTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YS_TextureDEMOTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YS_TextureDEMOTests/Pods-YS_TextureDEMOTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -263,6 +269,10 @@
 			children = (
 				3DAC5C01200CA56000423761 /* YSHomeLocationTagContentNode.h */,
 				3DAC5C02200CA56000423761 /* YSHomeLocationTagContentNode.m */,
+				3DAC5C04200CB35700423761 /* YSHomeTagsNode.h */,
+				3DAC5C05200CB35700423761 /* YSHomeTagsNode.m */,
+				3D1494AE200DE64A008EF6B8 /* YSHomeTagNode.h */,
+				3D1494AF200DE64A008EF6B8 /* YSHomeTagNode.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -579,6 +589,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D9309481FFF5A3D009436FB /* NSJSONSerialization+Extras.m in Sources */,
+				3D1494B0200DE64A008EF6B8 /* YSHomeTagNode.m in Sources */,
+				3DAC5C06200CB35700423761 /* YSHomeTagsNode.m in Sources */,
 				3D9309E61FFF645C009436FB /* NSDictionary+TypeSafe.m in Sources */,
 				3DAC5C03200CA56000423761 /* YSHomeLocationTagContentNode.m in Sources */,
 				3D93FCF11FFF2CE5009436FB /* ViewController.m in Sources */,
