@@ -171,8 +171,16 @@ static const CGFloat kInnerPadding = 0.0f;
 {
     self.albumImageNode.style.preferredSize = CGSizeMake(self.frame.size.width, 250);
     // count
+    
+    ASInsetLayoutSpec *insetCountSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(3, 3, 3, 3) child: self.albumContentNumberNode];
+    
+    UIImage *cornerImage = [UIImage as_resizableRoundedImageWithCornerRadius: 10 cornerColor: [UIColor clearColor] fillColor: [[UIColor blackColor] colorWithAlphaComponent: 0.6]];
+    ASImageNode *backImageNode = [[ASImageNode alloc] init];
+    backImageNode.image = cornerImage;
+    ASBackgroundLayoutSpec *backgroundCornerImageSpec = [ASBackgroundLayoutSpec backgroundLayoutSpecWithChild: insetCountSpec background: backImageNode];
+    
     UIEdgeInsets insets = UIEdgeInsetsMake(10, INFINITY, INFINITY, 10);
-    ASInsetLayoutSpec *albumContentNumberSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets:insets child: self.albumContentNumberNode];
+    ASInsetLayoutSpec *albumContentNumberSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets:insets child: backgroundCornerImageSpec];
     ASOverlayLayoutSpec *albumInfoSpec = [ASOverlayLayoutSpec overlayLayoutSpecWithChild: self.albumImageNode overlay: albumContentNumberSpec];
     
     // shadow
@@ -275,7 +283,6 @@ static const CGFloat kInnerPadding = 0.0f;
     if ( !_albumContentNumberNode ) {
         _albumContentNumberNode = [[ASTextNode alloc] init];
         _albumContentNumberNode.layerBacked = YES;
-        _albumContentNumberNode.backgroundColor = [UIColor lightGrayColor];
     }
     return _albumContentNumberNode;
 }

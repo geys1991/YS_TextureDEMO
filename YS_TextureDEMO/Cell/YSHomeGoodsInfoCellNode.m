@@ -98,7 +98,6 @@
     [arraySpec addObject: goodImageSpec];
     [arraySpec addObject: goodTitleSpec];
     
-    
     if ( self.goodsModel.tags.count > 0 ) {
         self.tagsContentNode.style.height = ASDimensionMake(30);
         ASInsetLayoutSpec *insetTagsContentSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(0, 0, 0, 0)
@@ -106,7 +105,6 @@
         
         [arraySpec addObject: insetTagsContentSpec];
     }
-    
     
     ASStackLayoutSpec *stackGoodInfoLayoutSpec = [ASStackLayoutSpec stackLayoutSpecWithDirection:ASStackLayoutDirectionVertical
                                                                                          spacing: 0
@@ -125,15 +123,25 @@
     ASRatioLayoutSpec *imageSpec = [ASRatioLayoutSpec ratioLayoutSpecWithRatio: imageRatio child:self.goodInfoImageNode];
     
     // like btn
-    self.likeNode.style.preferredSize = CGSizeMake(30, 30);
-    ASInsetLayoutSpec *insetLikeSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake( INFINITY, INFINITY, 15, 10) child: self.likeNode];
-    ASOverlayLayoutSpec *overlayGoodSpec = [ASOverlayLayoutSpec overlayLayoutSpecWithChild: imageSpec  overlay: insetLikeSpec];
+    self.likeNode.style.preferredSize = CGSizeMake(25, 25);
+    self.likeNode.style.alignSelf = ASStackLayoutAlignSelfEnd;
+    
+    ASInsetLayoutSpec *insetLikeSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake( 3, 3, 3, 10) child: self.likeNode];
+
+    // space
+    ASLayoutSpec *spacer = [[ASLayoutSpec alloc] init];
+    spacer.style.flexGrow = 1;
     
     // location
-    ASInsetLayoutSpec *insetLocationSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(INFINITY, 0, 15, INFINITY) child: self.locationContentNode];
-    ASOverlayLayoutSpec *overlayLocationContentSpec = [ASOverlayLayoutSpec overlayLayoutSpecWithChild: overlayGoodSpec  overlay: insetLocationSpec];
-
-    return overlayLocationContentSpec;
+    ASInsetLayoutSpec *insetLocationSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(0, 0, 0, 0) child: self.locationContentNode];
+    
+    ASStackLayoutSpec *stackGoodsSimpleSpec = [ASStackLayoutSpec stackLayoutSpecWithDirection: ASStackLayoutDirectionHorizontal spacing: 0 justifyContent: ASStackLayoutJustifyContentStart alignItems: ASStackLayoutAlignItemsCenter children: @[insetLocationSpec, spacer,  insetLikeSpec]];
+    
+    ASInsetLayoutSpec *insetGoodsSimpleSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(INFINITY, 0, 15, 0) child: stackGoodsSimpleSpec];
+    
+    ASOverlayLayoutSpec *overlayGoodSpec = [ASOverlayLayoutSpec overlayLayoutSpecWithChild: imageSpec  overlay: insetGoodsSimpleSpec];
+    
+    return overlayGoodSpec;
 }
 
 - (ASLayoutSpec *)goodTitlesSpecWithConstrainedSize:(ASSizeRange)constrained
@@ -199,6 +207,8 @@
 {
     if ( !_goodsSubTitleNode ) {
         _goodsSubTitleNode = [[ASTextNode alloc] init];
+        _goodsSubTitleNode.maximumNumberOfLines = 1;
+        _goodsSubTitleNode.truncationMode = NSLineBreakByTruncatingTail;
         _goodsSubTitleNode.layerBacked = YES;
     }
     return _goodsSubTitleNode;

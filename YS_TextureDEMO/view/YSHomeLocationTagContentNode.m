@@ -10,6 +10,8 @@
 
 @interface YSHomeLocationTagContentNode ()
 
+@property (nonatomic, strong) ASImageNode *backgroundCornerImage;
+
 @property (nonatomic, strong) ASImageNode *locationTagNode;
 
 @property (nonatomic, strong) ASTextNode *locationTextNode;
@@ -22,7 +24,7 @@
 {
     self = [super init];
     if ( self ) {
-        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent: 0.6];
+//        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent: 0.6];
         self.automaticallyManagesSubnodes = YES;
     }
     return self;
@@ -48,10 +50,23 @@
                                                                             justifyContent: ASStackLayoutJustifyContentStart alignItems: ASStackLayoutAlignItemsCenter
                                                                                   children: @[insetLocationTagSpec, insetLocationTextSpec]];
     
-    return stackLocationSpec;
+    ASBackgroundLayoutSpec *backgroundCornerImage = [ASBackgroundLayoutSpec backgroundLayoutSpecWithChild: stackLocationSpec background: self.backgroundCornerImage];
+    
+    return backgroundCornerImage;
 }
 
 #pragma mark - setter && getter
+
+-(ASImageNode *)backgroundCornerImage
+{
+    if ( !_backgroundCornerImage ) {
+        _backgroundCornerImage = [[ASImageNode alloc] init];
+        _backgroundCornerImage.layerBacked = YES;
+        UIImage *cornerImage = [UIImage as_resizableRoundedImageWithCornerRadius: 2 cornerColor: [UIColor clearColor] fillColor: [[UIColor blackColor] colorWithAlphaComponent: 0.6]];
+        _backgroundCornerImage.image = cornerImage;
+    }
+    return _backgroundCornerImage;
+}
 
 - (ASTextNode *)locationTextNode
 {

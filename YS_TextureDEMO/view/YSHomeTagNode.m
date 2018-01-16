@@ -42,13 +42,11 @@
 {
     if ( !_borderImageNode ) {
         _borderImageNode = [[ASImageNode alloc] init];
-        
         UIImage *backgroundHiglightedImage = [UIImage as_resizableRoundedImageWithCornerRadius: 3
                                                                                    cornerColor: [UIColor whiteColor]
                                                                                      fillColor: [UIColor whiteColor]
                                                                                    borderColor: [UIColor lightGrayColor]
                                                                                    borderWidth: 0.5];
-        
         _borderImageNode.image = backgroundHiglightedImage;
     }
     return _borderImageNode;
