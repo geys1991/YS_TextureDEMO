@@ -127,7 +127,7 @@
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
 {
     UIView *footerView = [[UIView alloc] initWithFrame: CGRectMake(0, 0, self.view.frame.size.width, 10.f)];
-    footerView.backgroundColor = [UIColor lightGrayColor];
+    footerView.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent: 0.5];
     return footerView;
 }
 

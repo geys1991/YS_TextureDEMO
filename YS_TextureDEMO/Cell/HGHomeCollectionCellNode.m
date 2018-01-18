@@ -170,8 +170,8 @@ static const CGFloat kInnerPadding = 0.0f;
 - (ASLayoutSpec *)albumInfoLayoutSpec
 {
     self.albumImageNode.style.preferredSize = CGSizeMake(self.frame.size.width, 250);
-    // count
     
+    // count
     ASInsetLayoutSpec *insetCountSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(3, 3, 3, 3) child: self.albumContentNumberNode];
     
     UIImage *cornerImage = [UIImage as_resizableRoundedImageWithCornerRadius: 10 cornerColor: [UIColor clearColor] fillColor: [[UIColor blackColor] colorWithAlphaComponent: 0.6]];

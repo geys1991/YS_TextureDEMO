@@ -10,8 +10,6 @@
 
 @interface YSHomeTagsNode : ASDisplayNode
 
-//- (void)setTagsContentWithTagsArray:(NSArray *)tags;
-
 - (instancetype)initWithTagsContentWithTagsArray:(NSArray *)tags;
 
 @end

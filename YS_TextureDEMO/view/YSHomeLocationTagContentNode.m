@@ -24,7 +24,6 @@
 {
     self = [super init];
     if ( self ) {
-//        self.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent: 0.6];
         self.automaticallyManagesSubnodes = YES;
     }
     return self;
