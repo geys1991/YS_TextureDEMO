@@ -13,7 +13,6 @@
 #import "YSHomeGoodsInfoCellNode.h"
 #import "YSHomeGoodsModel.h"
 
-
 @interface ViewController ()  <ASTableDelegate, ASTableDataSource>
 
 @property (nonatomic, strong) ASTableNode *tableViewNode;
@@ -23,6 +22,12 @@
 @end
 
 @implementation ViewController
+
+-(void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self loadPageWithContext: nil withPage: 1];
+}
 
 -(instancetype)init
 {
@@ -60,6 +65,7 @@
             }
             
             [self.tableView insertSections: indexPaths withRowAnimation: UITableViewRowAnimationNone];
+//            [self.tableView reloadData];
             if (context) {
                 [context completeBatchFetching:YES];
             }
@@ -131,24 +137,46 @@
     return footerView;
 }
 
-- (ASCellNode *)tableNode:(ASTableNode *)tableNode nodeForRowAtIndexPath:(NSIndexPath *)indexPath
+- (ASCellNodeBlock)tableNode:(ASTableNode *)tableNode nodeBlockForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     HGHomeFeedModel *feedModel = [self.dataSource objectAtIndex:indexPath.section];
-    
     if ( feedModel.feedType == HGHomeFeedTypeGoods ) {
-        YSHomeGoodsModel *dataModel = [[YSHomeGoodsModel alloc] initWithJSONDic:feedModel.feedItem];
-        YSHomeGoodsInfoCellNode *cellNode = [[YSHomeGoodsInfoCellNode alloc] initWithGoodsModel: dataModel];
-        cellNode.backgroundColor = [UIColor whiteColor];
-        cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cellNode;
+        return ^{
+            YSHomeGoodsModel *dataModel = [[YSHomeGoodsModel alloc] initWithJSONDic:feedModel.feedItem];
+            YSHomeGoodsInfoCellNode *cellNode = [[YSHomeGoodsInfoCellNode alloc] initWithGoodsModel: dataModel];
+            cellNode.backgroundColor = [UIColor whiteColor];
+            cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cellNode;
+        };
     }else {
-        HGCategoryCollectionModel *dataModel = [[HGCategoryCollectionModel alloc] initWithJSONDic:feedModel.feedItem];
-        HGHomeCollectionCellNode *cellNode = [[HGHomeCollectionCellNode alloc] initWithCollectionModel: dataModel];
-        cellNode.backgroundColor = [UIColor whiteColor];
-        cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
-        return cellNode;
+        return ^{
+            HGCategoryCollectionModel *dataModel = [[HGCategoryCollectionModel alloc] initWithJSONDic:feedModel.feedItem];
+            HGHomeCollectionCellNode *cellNode = [[HGHomeCollectionCellNode alloc] initWithCollectionModel: dataModel];
+            cellNode.backgroundColor = [UIColor whiteColor];
+            cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
+            return cellNode;
+        };
     }
 }
+
+//- (ASCellNode *)tableNode:(ASTableNode *)tableNode nodeForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    HGHomeFeedModel *feedModel = [self.dataSource objectAtIndex:indexPath.section];
+//
+//    if ( feedModel.feedType == HGHomeFeedTypeGoods ) {
+//        YSHomeGoodsModel *dataModel = [[YSHomeGoodsModel alloc] initWithJSONDic:feedModel.feedItem];
+//        YSHomeGoodsInfoCellNode *cellNode = [[YSHomeGoodsInfoCellNode alloc] initWithGoodsModel: dataModel];
+//        cellNode.backgroundColor = [UIColor whiteColor];
+//        cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
+//        return cellNode;
+//    }else {
+//        HGCategoryCollectionModel *dataModel = [[HGCategoryCollectionModel alloc] initWithJSONDic:feedModel.feedItem];
+//        HGHomeCollectionCellNode *cellNode = [[HGHomeCollectionCellNode alloc] initWithCollectionModel: dataModel];
+//        cellNode.backgroundColor = [UIColor whiteColor];
+//        cellNode.selectionStyle = UITableViewCellSelectionStyleNone;
+//        return cellNode;
+//    }
+//}
 
 #pragma mark - ASTableDelegate methods
 
@@ -156,7 +184,7 @@
 - (void)tableNode:(ASTableNode *)tableNode willBeginBatchFetchWithContext:(ASBatchContext *)context
 {
     [context beginBatchFetching];
-    [self loadPageWithContext:context withPage: self.page + 1];
+    [self loadPageWithContext: context withPage: self.page + 1];
 }
 
 #pragma mark - setter && getter

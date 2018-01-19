@@ -136,10 +136,12 @@ static const CGFloat kInnerPadding = 0.0f;
     self.authorAvatarNode.style.layoutPosition = CGPointMake(10, 12);
     self.certificateIconNode.style.preferredSize  = CGSizeMake(15, 15);
     self.certificateIconNode.style.layoutPosition = CGPointMake(30, 30);
-    ASAbsoluteLayoutSpec *userAvatarImageSpec = [ASAbsoluteLayoutSpec absoluteLayoutSpecWithSizing:ASAbsoluteLayoutSpecSizingSizeToFit children: @[self.authorAvatarNode, self.certificateIconNode]];
+    ASAbsoluteLayoutSpec *userAvatarImageSpec = [ASAbsoluteLayoutSpec absoluteLayoutSpecWithSizing: ASAbsoluteLayoutSpecSizingSizeToFit
+                                                                                          children: @[self.authorAvatarNode, self.certificateIconNode]];
     [childLayouts addObject: userAvatarImageSpec];
     
-    ASInsetLayoutSpec *nickNameInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(10, 0, 0, 0) child: self.authorNickNameNode];
+    ASInsetLayoutSpec *nickNameInsetSpec = [ASInsetLayoutSpec insetLayoutSpecWithInsets: UIEdgeInsetsMake(10, 0, 0, 0)
+                                                                                  child: self.authorNickNameNode];
     
     ASStackLayoutSpec *nickNameSpec = [ASStackLayoutSpec stackLayoutSpecWithDirection: ASStackLayoutDirectionVertical
                                                                               spacing: 0
